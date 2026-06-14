@@ -7,8 +7,12 @@ posts, but nobody has it organized for a founder trying to decide.
 
 `vcscore` pulls that scattered **public** signal together for your own diligence. It's the
 mirror of [dtscore](../deeptech-scorer): instead of scoring companies, it organizes what's
-publicly known about the people writing the checks, weighted toward **behavior in adversity**
-(down rounds, recaps/washouts, founder removals, board conduct, follow-on support).
+publicly known about the people writing the checks.
+
+The core question it answers: **how founder-friendly is this investor — how do they actually
+treat founders, especially when things go wrong?** Behavior in adversity (down rounds,
+recaps/washouts, founder removals, board conduct, follow-on support) is the sharpest tell, so
+it's weighted heaviest. Everything else is secondary to "how are they to founders."
 
 > **This is an internal tool, not a published product.** It organizes public information for
 > *your own* decision. It asserts nothing of its own, and it is not a verdict on any firm.
@@ -71,5 +75,15 @@ timelines, that's the tool being honest, not broken.
 - `vcscore.py` / `vcscore` — CLI + wrapper.
 - `tests/test_scoring.py` — offline tests for scoring + verification.
 - `firms/example-ventures.yaml` — a **fictional** example firm.
+
+## Roadmap
+
+- **X / Twitter ecosystem monitor (planned).** Connect a bot to X to continuously watch the
+  founder/investor ecosystem, surfacing fresh public signal about how firms treat founders and
+  feeding it into the gather step, so a firm's picture updates over time instead of being a
+  one-off lookup. Same rules apply: anything it surfaces still needs a verified public source
+  before it scores, and it uses the official API, no scraping.
+
+---
 
 Sibling design philosophy to dtscore: LLM gathers the mess, deterministic code does the scoring.
