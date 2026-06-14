@@ -1,6 +1,7 @@
-# FICTIONAL example firm — invented for testing the renderer. Not a real firm.
-firm: Meridian Partners
-aliases: [Meridian, Meridian Ventures]
+# FICTIONAL example firm — invented to demo the renderer. NOT a real firm.
+# All findings below are made up. Any resemblance to a real firm is coincidental.
+firm: Example Ventures (FICTIONAL — sample data, not a real firm)
+aliases: []
 as_of: 2026-06-14
 findings:
   down_round_conduct:

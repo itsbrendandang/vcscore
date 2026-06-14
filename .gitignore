@@ -14,7 +14,7 @@ __pycache__/
 # Real gathered diligence stays LOCAL (private reputation data on named firms).
 # Only the fictional example ships.
 firms/*
-!firms/meridian-partners.yaml
+!firms/example-ventures.yaml
 
 # Generated reports (about real firms) stay local
 reports/*

@@ -40,7 +40,7 @@ publicly known about the people writing the checks, weighted toward **behavior i
 cd ~/vcscore
 
 # Offline, no key needed:
-./vcscore score firms/meridian-partners.yaml --save-md   # score the fictional example
+./vcscore score firms/example-ventures.yaml --save-md   # score the fictional example
 ./vcscore rubric                                          # see/tune the dimensions + weights
 ./vcscore new acme-vc --firm "Acme Ventures"             # blank profile to fill by hand
 
@@ -70,6 +70,6 @@ timelines, that's the tool being honest, not broken.
 - `report.py` — terminal + markdown, receipts + always-on disclaimer.
 - `vcscore.py` / `vcscore` — CLI + wrapper.
 - `tests/test_scoring.py` — offline tests for scoring + verification.
-- `firms/meridian-partners.yaml` — a **fictional** example firm.
+- `firms/example-ventures.yaml` — a **fictional** example firm.
 
 Sibling design philosophy to dtscore: LLM gathers the mess, deterministic code does the scoring.
