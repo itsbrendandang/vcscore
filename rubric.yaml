@@ -1,0 +1,91 @@
+# VCScore — investor diligence rubric (INTERNAL TOOL)
+#
+# Inverts dtscore: instead of scoring companies, it organizes what is PUBLICLY
+# known about a VC firm, weighted toward behavior in adversity. This is a tool
+# for your own diligence, not a published product.
+#
+# How scoring works (see scoring.py): the gather step produces FINDINGS per
+# dimension, each tagged sign (positive/negative/neutral, re: founder-
+# friendliness) and severity (1-3), with a source URL. The verify step fetches
+# each URL and keeps only findings whose source actually supports the claim.
+# Deterministic code then turns the VERIFIED findings into a 0-10 dimension
+# score. Higher = the public signal leans more founder-friendly.
+#
+# The composite is a "sourced evidence index", not a verdict. If too few
+# dimensions have any verified signal, there is NO composite — the firm renders
+# as a sourced incident timeline instead (see min_known_dimensions).
+
+meta:
+  name: "VCScore (internal)"
+  version: 1
+  scale_max: 10
+  # baseline a dimension sits at once it has any verified signal; findings
+  # nudge it from here.
+  neutral_baseline: 5.0
+  # each finding moves the dimension score by sign * severity * step.
+  finding_step: 1.0
+  # if fewer than this many dimensions have verified findings, skip the
+  # composite and render an incident timeline only.
+  min_known_dimensions: 4
+
+# Composite bands. Worded as what the PUBLIC SIGNAL suggests, not as a verdict.
+bands:
+  - {min: 75, label: "SIGNAL: FOUNDER-FRIENDLY", note: "Public record leans supportive, especially in hard times."}
+  - {min: 60, label: "SIGNAL: MOSTLY POSITIVE", note: "More good than bad on the record, with caveats worth reading."}
+  - {min: 45, label: "SIGNAL: MIXED",            note: "Public record cuts both ways. Read the receipts before deciding."}
+  - {min: 30, label: "SIGNAL: CONCERNING",       note: "Documented friction, especially in adversity. Diligence hard."}
+  - {min: 0,  label: "SIGNAL: RED FLAGS",        note: "Public record shows repeated adversity problems. Be careful."}
+
+# A dimension whose computed score is at or below this is surfaced as a flag.
+flag_at: 3
+
+dimensions:
+
+  down_round_conduct:
+    title: "Down-round conduct"
+    weight: 18
+    question: "How did they behave when a company had to raise below its prior valuation?"
+    positive: "Supported the round, kept terms fair, protected the founder/common."
+    negative: "Used the leverage for punitive terms, heavy structure, or a washout."
+
+  recap_washout_behavior:
+    title: "Recap / washout behavior"
+    weight: 16
+    question: "In restructurings, did they wipe out earlier shareholders and founders, or share the pain?"
+    positive: "Shared dilution, preserved founder/employee stake where possible."
+    negative: "Forced recaps that zeroed out founders, employees, or earlier holders."
+
+  founder_removal_history:
+    title: "Founder-removal history"
+    weight: 14
+    question: "Do they push founders out, and if so, how is it handled?"
+    positive: "Kept founders in seat or transitioned them fairly and transparently."
+    negative: "Pattern of removing founders, especially abruptly or self-servingly."
+
+  board_conduct:
+    title: "Board conduct"
+    weight: 12
+    question: "How do they behave in the boardroom, especially under stress?"
+    positive: "Constructive, founder-aligned, honest in hard conversations."
+    negative: "Adversarial, blindsiding, leaking, or acting against the company."
+
+  follow_on_support:
+    title: "Follow-on support in hard times"
+    weight: 12
+    question: "Do they keep backing companies when things get hard, or bail?"
+    positive: "Bridged, re-upped, or actively helped when a company struggled."
+    negative: "Walked away, signaled negatively, or starved companies of support."
+
+  transparency_communication:
+    title: "Transparency & communication"
+    weight: 14
+    question: "Are they straight with founders, or opaque and slow?"
+    positive: "Clear, fast, honest, no surprises."
+    negative: "Ghosting, mixed signals, opaque process, surprises."
+
+  reputation_breadth:
+    title: "Reputation breadth (corroboration)"
+    weight: 14
+    question: "Is the signal corroborated across many independent founders/sources, or one-off?"
+    positive: "Consistent positive accounts across many independent sources."
+    negative: "Consistent negative accounts across many independent sources."

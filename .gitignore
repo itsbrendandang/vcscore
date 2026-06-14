@@ -1,0 +1,21 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Secrets
+.env
+.env.*
+
+# OS
+.DS_Store
+
+# Real gathered diligence stays LOCAL (private reputation data on named firms).
+# Only the fictional example ships.
+firms/*
+!firms/meridian-partners.yaml
+
+# Generated reports (about real firms) stay local
+reports/*
+!reports/.gitkeep

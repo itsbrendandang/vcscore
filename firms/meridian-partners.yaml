@@ -1,0 +1,51 @@
+# FICTIONAL example firm — invented for testing the renderer. Not a real firm.
+firm: Meridian Partners
+aliases: [Meridian, Meridian Ventures]
+as_of: 2026-06-14
+findings:
+  down_round_conduct:
+    - claim: "Imposed a heavy structured down round with full-ratchet terms on a struggling portfolio company."
+      source_url: "https://example.com/meridian-downround"
+      sign: negative
+      severity: 3
+      verified: true
+      verify_reason: "example fixture"
+  recap_washout_behavior:
+    - claim: "Led a recap that preserved a meaningful founder and employee option pool."
+      source_url: "https://example.com/meridian-recap"
+      sign: positive
+      severity: 2
+      verified: true
+      verify_reason: "example fixture"
+  board_conduct:
+    - claim: "Partner described by two founders as constructive and direct in hard board meetings."
+      source_url: "https://example.com/meridian-board"
+      sign: positive
+      severity: 1
+      verified: true
+      verify_reason: "example fixture"
+  follow_on_support:
+    - claim: "Bridged two companies through a tough fundraising market rather than letting them fold."
+      source_url: "https://example.com/meridian-bridge"
+      sign: positive
+      severity: 3
+      verified: true
+      verify_reason: "example fixture"
+  reputation_breadth:
+    - claim: "Accounts are mixed across sources, with both strong references and specific complaints."
+      source_url: "https://example.com/meridian-reputation"
+      sign: neutral
+      severity: 2
+      verified: true
+      verify_reason: "example fixture"
+    # an unverified finding: shows up under 'check yourself', does NOT score
+    - claim: "Unconfirmed forum claim about a partner's conduct."
+      source_url: "https://example.com/meridian-forum-thread"
+      sign: negative
+      severity: 2
+      verified: false
+      verify_reason: "source loaded but does not mention the firm"
+  founder_removal_history: []
+  transparency_communication: []
+overrides: {}
+notes: "Fictional sample. Two dimensions intentionally left unknown to show partial coverage."
